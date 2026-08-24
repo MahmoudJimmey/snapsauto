@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <title>I should work with you — hear me out</title>
 <meta name="description" content="A two-minute pitch from Mahmoud Gamal to Snaps Automotive. Marketer by trade, petrolhead since five.">
@@ -306,7 +306,7 @@ footer a:hover{color:var(--amber);}
         <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
         <span class="badge">ON CAMERA</span>
       </button>
-      <p class="cap"><b>Real estate — presenter</b><br>Scripted, presented, cut for the feed.</p>
+      <p class="cap"><b>Il Monte Galala — presenter</b><br>Scripted, presented, cut for the feed. <a class="vlink" href="https://youtube.com/shorts/XeYbJSETtAM" target="_blank" rel="noopener noreferrer">On YouTube</a></p>
     </div>
     <div class="vert">
       <button class="frame" data-id="DNqiElMj-U8" aria-label="Play: second real estate presenter video">
@@ -314,7 +314,7 @@ footer a:hover{color:var(--amber);}
         <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
         <span class="badge">ON CAMERA</span>
       </button>
-      <p class="cap"><b>Real estate — presenter</b><br>Same discipline, different property.</p>
+      <p class="cap"><b>Il Monte Galala — presenter</b><br>Same discipline, another cut. <a class="vlink" href="https://youtube.com/shorts/DNqiElMj-U8" target="_blank" rel="noopener noreferrer">On YouTube</a></p>
     </div>
   </div>
 
@@ -359,7 +359,7 @@ footer a:hover{color:var(--amber);}
         <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
         <span class="badge">AUTOLOGIST · 7:11</span>
       </button>
-      <p class="cap"><b class="ar">فيراري سخر منه… فأسس لامبورغيني</b><br>Researched, written, shot and presented by me. Nobody commissioned it.</p>
+      <p class="cap"><b class="ar">فيراري سخر منه… فأسس لامبورغيني</b><br>Researched, written, shot and presented by me. Nobody commissioned it. <a class="vlink" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">On YouTube</a></p>
     </div>
   </div>
 
@@ -509,11 +509,12 @@ footer a:hover{color:var(--amber);}
       if (frame.dataset.loaded) return;
       frame.dataset.loaded = '1';
       var f = document.createElement('iframe');
-      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
       f.title = frame.getAttribute('aria-label') || 'Video';
-      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       f.allowFullscreen = true;
-      f.setAttribute('referrerpolicy','no-referrer');
+      /* YouTube needs the embedding origin to authorise playback — stripping it causes Error 153 */
+      f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
       frame.innerHTML = '';
       frame.appendChild(f);
     });
