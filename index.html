@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src https://www.youtube-nocookie.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <title>I should work with you — hear me out</title>
 <meta name="description" content="A two-minute pitch from Mahmoud Gamal to Snaps Automotive. Marketer by trade, petrolhead since five.">
 <meta name="robots" content="noindex">
@@ -160,6 +160,48 @@ section{position:relative;padding:7vw clamp(1.6rem,7vw,5rem);max-width:1080px;ma
 }
 .pcard:hover .go{color:var(--amber);}
 
+/* ---------- video embeds (click-to-load, no tracking until you press play) ---------- */
+.reel{display:grid;gap:1.5rem;margin-top:3rem;}
+.reel.two{grid-template-columns:repeat(2,1fr);max-width:560px;}
+.reel.one{grid-template-columns:1fr;max-width:840px;}
+@media(max-width:560px){.reel.two{grid-template-columns:1fr;max-width:340px;}}
+
+.frame{
+  position:relative;background:#000;border:1px solid var(--steel-line);
+  overflow:hidden;cursor:pointer;display:block;width:100%;padding:0;
+  transition:border-color .3s var(--ease);
+}
+.frame:hover,.frame:focus-visible{border-color:var(--amber);outline:none;}
+.vert .frame{aspect-ratio:9/16;}
+.wide .frame{aspect-ratio:16/9;}
+.frame img{width:100%;height:100%;object-fit:cover;display:block;opacity:.82;transition:opacity .35s var(--ease),transform .5s var(--ease);}
+.frame:hover img,.frame:focus-visible img{opacity:1;transform:scale(1.04);}
+.frame .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.frame .play i{
+  width:58px;height:58px;border-radius:50%;background:var(--amber);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+  transition:transform .3s var(--ease);
+}
+.frame:hover .play i{transform:scale(1.09);}
+.frame .play svg{width:20px;height:20px;color:var(--ink);margin-left:3px;}
+.frame iframe{width:100%;height:100%;border:0;display:block;}
+.frame .badge{
+  position:absolute;left:10px;bottom:10px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;
+  background:rgba(13,15,20,.85);color:var(--amber);
+  border:1px solid rgba(255,176,32,.45);padding:.35em .55em;
+}
+.cap{
+  font-family:var(--mono);font-size:.73rem;color:var(--steel);letter-spacing:.03em;
+  margin-top:.8rem;line-height:1.55;
+}
+.cap b{color:var(--cream);font-weight:500;}
+.cap .ar{
+  font-family:'Segoe UI',Tahoma,'Noto Naskh Arabic',Arial,sans-serif;
+  font-size:.95rem;direction:rtl;unicode-bidi:isolate;display:inline-block;
+}
+
 /* ---------- inline video links ---------- */
 .vlink{
   color:var(--amber);text-decoration:none;
@@ -254,20 +296,39 @@ footer a:hover{color:var(--amber);}
     <p>I've been doing well in my career. That isn't the problem. The problem is that doing well isn't the same as doing more — and I want more. Bigger problems, better work, and <strong>a product I actually love and understand.</strong></p>
     <p>Because the part of this job I genuinely love is the part before the camera ever comes out: <strong>market study and customer behaviour.</strong></p>
     <p>That's what decides everything downstream. Who the audience is, what they're afraid of, what they're proud of, what they'd screenshot and send to a friend — that shapes the content. Not the other way round.</p>
-    <p>And I don't just plan it. <strong>I've put my own face on camera to generate qualified leads</strong> — scripted it, presented it, and watched the cost per qualified lead come down because of it. I loved doing it.</p>
+    <p>And I don't just plan it. <strong>I've put my own face on camera to generate qualified leads</strong> — scripted it, presented it, and watched the cost per qualified lead come down because of it. I loved doing it. Here's <a class="vlink" href="https://youtube.com/shorts/XeYbJSETtAM" target="_blank" rel="noopener noreferrer">one of them</a>, and <a class="vlink" href="https://youtube.com/shorts/DNqiElMj-U8" target="_blank" rel="noopener noreferrer">another</a>.</p>
+  </div>
+
+  <div class="reel two reveal">
+    <div class="vert">
+      <button class="frame" data-id="XeYbJSETtAM" aria-label="Play: real estate presenter video">
+        <img alt="Mahmoud presenting to camera — real estate" loading="lazy">
+        <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
+        <span class="badge">ON CAMERA</span>
+      </button>
+      <p class="cap"><b>Real estate — presenter</b><br>Scripted, presented, cut for the feed.</p>
+    </div>
+    <div class="vert">
+      <button class="frame" data-id="DNqiElMj-U8" aria-label="Play: second real estate presenter video">
+        <img alt="Mahmoud presenting to camera — real estate" loading="lazy">
+        <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
+        <span class="badge">ON CAMERA</span>
+      </button>
+      <p class="cap"><b>Real estate — presenter</b><br>Same discipline, different property.</p>
+    </div>
   </div>
 
   <div class="proof-grid">
-    <a class="pcard reveal" href="https://youtube.com/shorts/XeYbJSETtAM" target="_blank" rel="noopener noreferrer">
-      <span class="num" data-count="470">470K+</span>
+    <div class="pcard reveal" style="cursor:default">
+      <span class="num">470K+</span>
       <span class="lbl">Video plays in a single month — on-camera, real estate</span>
-      <span class="go">WATCH THE PRESENTER WORK ↗</span>
-    </a>
-    <a class="pcard reveal" href="https://youtube.com/shorts/DNqiElMj-U8" target="_blank" rel="noopener noreferrer">
+      <span class="go" style="color:var(--steel)">TWO OF THEM ARE ABOVE</span>
+    </div>
+    <div class="pcard reveal" style="cursor:default">
       <span class="num">10M</span>
       <span class="lbl">EGP monthly ad spend managed · 10–12 activations a month</span>
-      <span class="go">ANOTHER ONE, SAME DISCIPLINE ↗</span>
-    </a>
+      <span class="go" style="color:var(--steel)">PAID, SEO, CONTENT, BRAND</span>
+    </div>
     <a class="pcard reveal" href="https://mahmoudjimmey.github.io/AutoApp/" target="_blank" rel="noopener noreferrer">
       <span class="num">3+</span>
       <span class="lbl">Years full-funnel — paid, SEO, content, brand governance</span>
@@ -288,19 +349,30 @@ footer a:hover{color:var(--amber);}
   <div class="copy reveal">
     <p>I don't love cars the way the next person loves cars. <strong>I understand them.</strong> The design. The purpose. The engineering compromise. The specific problem each car was built to solve, and who it was solved for.</p>
     <p>I've spent most of my free time studying cars since I was five years old. I still do it. It never became work — it stayed the thing I do at night.</p>
-    <p>So I started a channel about it, as a hobby: <strong>Autologist</strong> — F1, WRC and Le Mans, in Arabic. Nobody asked me to. It grew from zero on retention curves and hook testing, not luck.</p>
+    <p>So I started a channel about it, as a hobby: <a class="vlink" href="https://www.youtube.com/@autologist917" target="_blank" rel="noopener noreferrer">Autologist</a> — F1, WRC and Le Mans, in Arabic. Nobody asked me to. It grew from zero on retention curves and hook testing, not luck. Start with <a class="vlink" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">the Lamborghini film</a> if you only watch one.</p>
+  </div>
+
+  <div class="reel one reveal">
+    <div class="wide">
+      <button class="frame" data-id="nFuozR6zUCU" aria-label="Play: Ferrari mocked him, so he founded Lamborghini">
+        <img alt="Autologist — Ferrari mocked him, so he founded Lamborghini" loading="lazy">
+        <span class="play"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i></span>
+        <span class="badge">AUTOLOGIST · 7:11</span>
+      </button>
+      <p class="cap"><b class="ar">فيراري سخر منه… فأسس لامبورغيني</b><br>Researched, written, shot and presented by me. Nobody commissioned it.</p>
+    </div>
   </div>
 
   <div class="proof-grid">
-    <a class="pcard reveal" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">
+    <div class="pcard reveal" style="cursor:default">
       <span class="num">50K+</span>
       <span class="lbl">TikTok views in under three months — Autologist, from a standing start</span>
-      <span class="go">WATCH AN AUTOLOGIST FILM ↗</span>
-    </a>
-    <a class="pcard reveal" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">
+      <span class="go" style="color:var(--steel)">FROM ZERO, ON PURPOSE</span>
+    </div>
+    <a class="pcard reveal" href="https://www.youtube.com/@autologist917" target="_blank" rel="noopener noreferrer">
       <span class="num">27K</span>
       <span class="lbl">Views on one vehicle-analysis video — researched, scripted, shot and presented by me</span>
-      <span class="go">SEE HOW I TALK ABOUT A CAR ↗</span>
+      <span class="go">THE WHOLE CHANNEL ↗</span>
     </a>
     <div class="pcard reveal" style="cursor:default">
       <span class="num">05</span>
@@ -393,6 +465,7 @@ footer a:hover{color:var(--amber);}
   <span>MAHMOUD GAMAL · CAIRO, EGYPT</span>
   <span>
     <a href="https://mahmoudjimmey.github.io/AutoApp/" target="_blank" rel="noopener noreferrer">FULL PORTFOLIO</a> ·
+    <a href="https://www.youtube.com/@autologist917" target="_blank" rel="noopener noreferrer">AUTOLOGIST</a> ·
     <a href="https://linkedin.com/in/mahmoudgamal-eldeen" target="_blank" rel="noopener noreferrer">LINKEDIN</a> ·
     <a href="https://wa.me/201090113777" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
   </span>
@@ -412,6 +485,39 @@ footer a:hover{color:var(--amber);}
   } else {
     els.forEach(function(el){ el.classList.add('in'); });
   }
+
+  /* video facades — thumbnail now, YouTube only after a deliberate click */
+  document.querySelectorAll('.frame').forEach(function(frame){
+    var id = frame.getAttribute('data-id');
+    var img = frame.querySelector('img');
+    var vertical = frame.parentNode.classList.contains('vert');
+
+    /* shorts keep their real aspect ratio under oardefault; fall back if absent */
+    var sources = vertical
+      ? ['https://i.ytimg.com/vi/' + id + '/oardefault.jpg',
+         'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg']
+      : ['https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg',
+         'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'];
+    var attempt = 0;
+    img.addEventListener('error', function(){
+      attempt++;
+      if (attempt < sources.length) { img.src = sources[attempt]; }
+    });
+    img.src = sources[0];
+
+    frame.addEventListener('click', function(){
+      if (frame.dataset.loaded) return;
+      frame.dataset.loaded = '1';
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+      f.title = frame.getAttribute('aria-label') || 'Video';
+      f.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.allowFullscreen = true;
+      f.setAttribute('referrerpolicy','no-referrer');
+      frame.innerHTML = '';
+      frame.appendChild(f);
+    });
+  });
 
   /* progress bar + gear indicator */
   var bar = document.getElementById('bar');
