@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'none'">
+<title>I should work with you — hear me out</title>
+<meta name="description" content="A two-minute pitch from Mahmoud Gamal to Snaps Automotive. Marketer by trade, petrolhead since five.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#12141a;
+  --bg-2:#0d0f14;
+  --panel:#1b1e26;
+  --panel-2:#232733;
+  --cream:#ede7da;
+  --ink:#15161a;
+  --amber:#ffb020;
+  --amber-dim:#c98a1f;
+  --green:#3c8064;
+  --steel:#8b93a1;
+  --steel-line:rgba(139,147,161,.22);
+  --radius:2px;
+  --ease:cubic-bezier(.16,.8,.28,1);
+  --display:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --serif:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--serif);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--amber);color:var(--ink);}
+a{color:inherit;}
+img{max-width:100%;}
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--amber);
+  display:flex;
+  align-items:center;
+  gap:.6em;
+  margin:0;
+}
+.eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);display:inline-block;flex:none;}
+
+h1,h2,h3{font-family:var(--display);font-weight:800;text-transform:uppercase;line-height:.94;margin:0;letter-spacing:.01em;}
+
+section{position:relative;padding:7vw clamp(1.6rem,7vw,5rem);max-width:1080px;margin:0 auto;}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ---------- progress bar ---------- */
+#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--amber);z-index:60;transition:width .1s linear;}
+
+/* ---------- gear indicator ---------- */
+#gear{
+  position:fixed;top:16px;right:16px;z-index:50;
+  width:74px;
+  background:rgba(13,15,20,.82);
+  border:1px solid var(--steel-line);
+  padding:.55rem .4rem .45rem;
+  text-align:center;
+  backdrop-filter:blur(6px);
+}
+#gear .g{
+  font-family:var(--display);font-weight:800;font-size:2.1rem;line-height:1;
+  color:var(--amber);display:block;
+  transition:transform .18s var(--ease);
+}
+#gear .g.shift{transform:translateY(-4px) scale(1.12);}
+#gear .lbl{font-family:var(--mono);font-size:7.5px;letter-spacing:.14em;color:var(--steel);display:block;margin-top:.3rem;}
+#gear .ladder{display:flex;gap:2px;justify-content:center;margin-top:.4rem;}
+#gear .ladder i{width:7px;height:3px;background:var(--steel-line);display:block;}
+#gear .ladder i.on{background:var(--amber);}
+@media (max-width:640px){#gear{width:56px;top:10px;right:10px;padding:.4rem .3rem .35rem;}#gear .g{font-size:1.5rem;}}
+
+/* ---------- opening ---------- */
+#open{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:8vw clamp(1.6rem,7vw,5rem);
+  background:radial-gradient(55% 55% at 30% 40%,rgba(255,176,32,.08),transparent 65%),var(--bg-2);
+}
+.addressee{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--steel);margin:0 0 1.6rem;
+}
+.addressee b{color:var(--cream);font-weight:600;}
+#open h1{font-size:clamp(2.4rem,6.4vw,5.2rem);color:var(--cream);max-width:17ch;}
+#open h1 em{font-style:normal;color:var(--amber);}
+.open-sub{font-size:1.15rem;color:var(--steel);max-width:44ch;margin-top:1.8rem;line-height:1.6;}
+.meta-line{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel);
+  margin-top:3.2rem;display:flex;gap:1.4rem;flex-wrap:wrap;align-items:center;
+}
+.meta-line span.dot{color:var(--amber);}
+.scroll-cue{
+  margin-top:2.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel);
+  display:flex;align-items:center;gap:.6em;animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* ---------- checker strip ---------- */
+.strip{height:10px;width:100%;background-image:repeating-linear-gradient(135deg,var(--steel-line) 0 10px,transparent 10px 20px);opacity:.5;}
+
+/* ---------- generic block ---------- */
+.block-head{max-width:62ch;}
+.block-head h2{font-size:clamp(1.9rem,4vw,3.2rem);color:var(--cream);margin-top:1.2rem;}
+.block-head h2 em{font-style:normal;color:var(--amber);}
+.copy{font-size:1.12rem;line-height:1.8;color:#d9d3c4;max-width:60ch;}
+.copy p{margin:1.15rem 0 0;}
+.copy p:first-child{margin-top:1.6rem;}
+.copy strong{color:var(--cream);font-weight:600;}
+
+/* ---------- pull quote ---------- */
+.pull{
+  margin:4rem 0 0;padding:2.4rem 2.2rem;
+  border-left:2px solid var(--amber);
+  background:linear-gradient(90deg,rgba(255,176,32,.07),transparent 70%);
+  font-family:var(--display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(1.4rem,3vw,2.3rem);line-height:1.08;color:var(--cream);
+  max-width:22ch;
+}
+.pull em{font-style:normal;color:var(--amber);}
+
+/* ---------- marketing section ---------- */
+#marketing{background:var(--bg);}
+#petrol{background:var(--bg-2);}
+#lifestyle{background:var(--bg);}
+#homework{background:var(--bg-2);}
+
+/* ---------- proof cards ---------- */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;}
+@media(max-width:860px){.proof-grid{grid-template-columns:1fr;}}
+.pcard{
+  display:block;text-decoration:none;background:var(--panel);
+  border:1px solid var(--steel-line);padding:1.6rem 1.5rem;
+  transition:transform .3s var(--ease),border-color .3s var(--ease),background .3s var(--ease);
+}
+.pcard:hover,.pcard:focus-visible{transform:translateY(-4px);border-color:var(--amber);background:var(--panel-2);outline:none;}
+.pcard .num{display:block;font-family:var(--display);font-weight:800;font-size:2.5rem;color:var(--amber);line-height:1;}
+.pcard .lbl{display:block;font-family:var(--mono);font-size:.74rem;color:var(--steel);letter-spacing:.04em;margin-top:.7rem;line-height:1.6;}
+.pcard .go{
+  display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--cream);
+  margin-top:1.2rem;
+}
+.pcard:hover .go{color:var(--amber);}
+
+/* ---------- inline video links ---------- */
+.vlink{
+  color:var(--amber);text-decoration:none;
+  border-bottom:1px solid rgba(255,176,32,.45);
+  padding-bottom:1px;transition:border-color .25s var(--ease),background .25s var(--ease);
+  white-space:nowrap;
+}
+.vlink::after{content:" ↗";font-family:var(--mono);font-size:.8em;}
+.vlink:hover,.vlink:focus-visible{border-bottom-color:var(--amber);background:rgba(255,176,32,.1);outline:none;}
+
+/* ---------- homework list ---------- */
+.hw{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--steel-line);border:1px solid var(--steel-line);margin-top:2.8rem;}
+@media(max-width:760px){.hw{grid-template-columns:1fr;}}
+.hw div{background:var(--bg-2);padding:1.4rem 1.4rem;}
+.hw .t{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--amber);text-transform:uppercase;}
+.hw .d{font-size:1rem;line-height:1.6;color:#d9d3c4;margin-top:.6rem;}
+
+/* ---------- close ---------- */
+#close{
+  background:var(--bg-2);text-align:center;padding-top:9vw;padding-bottom:8vw;
+  background-image:radial-gradient(60% 60% at 50% 20%,rgba(255,176,32,.09),transparent 65%);
+}
+#close .eyebrow{justify-content:center;}
+#close h2{font-size:clamp(2.2rem,5.4vw,4rem);color:var(--cream);margin-top:1.3rem;max-width:18ch;margin-left:auto;margin-right:auto;}
+#close h2 em{font-style:normal;color:var(--amber);}
+.close-sub{color:var(--steel);max-width:46ch;margin:1.5rem auto 0;font-size:1.08rem;line-height:1.7;}
+.cta-buttons{display:flex;justify-content:center;gap:.9rem;flex-wrap:wrap;margin-top:2.8rem;}
+.btn{
+  font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;
+  text-decoration:none;padding:1.05em 1.8em;border:1px solid var(--amber);
+  color:var(--ink);background:var(--amber);
+  transition:transform .25s var(--ease),background .25s var(--ease),color .25s var(--ease),box-shadow .25s var(--ease);
+  display:inline-flex;align-items:center;gap:.6em;
+}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);box-shadow:0 8px 22px rgba(255,176,32,.22);outline:none;}
+.btn svg{width:16px;height:16px;}
+.btn.ghost{background:transparent;color:var(--cream);border-color:var(--steel-line);box-shadow:none;}
+.btn.ghost:hover,.btn.ghost:focus-visible{border-color:var(--amber);color:var(--amber);}
+.signoff{margin-top:3.6rem;color:var(--steel);font-size:1rem;font-style:italic;}
+
+footer{
+  padding:2.4rem clamp(1.6rem,7vw,5rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;color:var(--steel);
+  max-width:1080px;margin:0 auto;
+}
+footer a{text-decoration:none;}
+footer a:hover{color:var(--amber);}
+
+@media (max-width:860px){section{padding:14vw 7vw;}.copy{font-size:1.06rem;}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .reveal{transition:none;opacity:1;transform:none;}
+  .scroll-cue{animation:none;}
+  #gear .g{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<div id="gear" aria-hidden="true">
+  <span class="g" id="gearNum">N</span>
+  <span class="lbl">GEAR</span>
+  <span class="ladder" id="ladder"><i></i><i></i><i></i><i></i><i></i></span>
+</div>
+
+<main>
+
+<!-- ============ OPENING ============ -->
+<section id="open">
+  <p class="addressee">To: <b>Snaps Automotive</b> &nbsp;·&nbsp; From: <b>Mahmoud Gamal</b></p>
+  <h1 class="reveal in">I should work with you.<br><em>Hear me out.</em></h1>
+  <p class="open-sub reveal in">Everything you're putting out is worth watching, and I want to be part of it. So here is why I should be in your consideration — the short version, because I know you have a shoot to get to.</p>
+  <p class="meta-line reveal in">
+    <span>≈ 2 MIN READ</span><span class="dot">·</span><span>NO SLIDES</span><span class="dot">·</span><span>NO ATTACHMENTS</span>
+  </p>
+  <p class="scroll-cue reveal in">↓ &nbsp;let's go</p>
+</section>
+
+<div class="strip"></div>
+
+<!-- ============ MARKETING ============ -->
+<section id="marketing">
+  <div class="block-head reveal">
+    <p class="eyebrow">Reason one</p>
+    <h2>I love marketing.<br>And I'm <em>good at it</em>.</h2>
+  </div>
+
+  <div class="copy reveal">
+    <p>I've been doing well in my career. That isn't the problem. The problem is that doing well isn't the same as doing more — and I want more. Bigger problems, better work, and <strong>a product I actually love and understand.</strong></p>
+    <p>Because the part of this job I genuinely love is the part before the camera ever comes out: <strong>market study and customer behaviour.</strong></p>
+    <p>That's what decides everything downstream. Who the audience is, what they're afraid of, what they're proud of, what they'd screenshot and send to a friend — that shapes the content. Not the other way round.</p>
+    <p>And I don't just plan it. <strong>I've put my own face on camera to generate qualified leads</strong> — scripted it, presented it, and watched the cost per qualified lead come down because of it. I loved doing it.</p>
+  </div>
+
+  <div class="proof-grid">
+    <a class="pcard reveal" href="https://youtube.com/shorts/XeYbJSETtAM" target="_blank" rel="noopener noreferrer">
+      <span class="num" data-count="470">470K+</span>
+      <span class="lbl">Video plays in a single month — on-camera, real estate</span>
+      <span class="go">WATCH THE PRESENTER WORK ↗</span>
+    </a>
+    <a class="pcard reveal" href="https://youtube.com/shorts/DNqiElMj-U8" target="_blank" rel="noopener noreferrer">
+      <span class="num">10M</span>
+      <span class="lbl">EGP monthly ad spend managed · 10–12 activations a month</span>
+      <span class="go">ANOTHER ONE, SAME DISCIPLINE ↗</span>
+    </a>
+    <a class="pcard reveal" href="https://mahmoudjimmey.github.io/AutoApp/" target="_blank" rel="noopener noreferrer">
+      <span class="num">3+</span>
+      <span class="lbl">Years full-funnel — paid, SEO, content, brand governance</span>
+      <span class="go">THE LONGER VERSION ↗</span>
+    </a>
+  </div>
+</section>
+
+<div class="strip"></div>
+
+<!-- ============ PETROLHEAD ============ -->
+<section id="petrol">
+  <div class="block-head reveal">
+    <p class="eyebrow">Reason two</p>
+    <h2>I'm a petrolhead.<br>Not the <em>usual kind</em>.</h2>
+  </div>
+
+  <div class="copy reveal">
+    <p>I don't love cars the way the next person loves cars. <strong>I understand them.</strong> The design. The purpose. The engineering compromise. The specific problem each car was built to solve, and who it was solved for.</p>
+    <p>I've spent most of my free time studying cars since I was five years old. I still do it. It never became work — it stayed the thing I do at night.</p>
+    <p>So I started a channel about it, as a hobby: <strong>Autologist</strong> — F1, WRC and Le Mans, in Arabic. Nobody asked me to. It grew from zero on retention curves and hook testing, not luck.</p>
+  </div>
+
+  <div class="proof-grid">
+    <a class="pcard reveal" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">
+      <span class="num">50K+</span>
+      <span class="lbl">TikTok views in under three months — Autologist, from a standing start</span>
+      <span class="go">WATCH AN AUTOLOGIST FILM ↗</span>
+    </a>
+    <a class="pcard reveal" href="https://youtu.be/nFuozR6zUCU" target="_blank" rel="noopener noreferrer">
+      <span class="num">27K</span>
+      <span class="lbl">Views on one vehicle-analysis video — researched, scripted, shot and presented by me</span>
+      <span class="go">SEE HOW I TALK ABOUT A CAR ↗</span>
+    </a>
+    <div class="pcard reveal" style="cursor:default">
+      <span class="num">05</span>
+      <span class="lbl">The age I started studying cars. Nobody paid me for any of it, and I never stopped</span>
+      <span class="go" style="color:var(--steel)">STILL DOING IT TONIGHT</span>
+    </div>
+  </div>
+</section>
+
+<div class="strip"></div>
+
+<!-- ============ THE LIFESTYLE IDEA ============ -->
+<section id="lifestyle">
+  <div class="block-head reveal">
+    <p class="eyebrow">Reason three — the one that matters</p>
+    <h2>A car is never<br>just <em>a car</em>.</h2>
+  </div>
+
+  <div class="copy reveal">
+    <p>This is the bit I'd want to work on with you.</p>
+    <p>A car is part of the lifestyle of the person who owns it. So the job isn't to shoot the car — it's to <strong>portray the life the owner would have</strong>. Different car, different life, different frame, different light, different music, different person in the driver's seat.</p>
+    <p>You already do this. The Dongfeng 007 film isn't a spec sheet, it's a mood. The ROX 01 piece with a real woman living a real day isn't a product demo, it's a life. That's the difference between coverage and <strong>advertising that sells</strong>.</p>
+    <p>I want to be on the side of the table where that decision gets made — the audience study that says <em>this</em> owner, <em>this</em> life, <em>this</em> story — and then hand it to a crew that can actually shoot it. You are that crew.</p>
+  </div>
+
+  <p class="pull reveal">You portray the life the owner would have. <em>I like that.</em></p>
+</section>
+
+<div class="strip"></div>
+
+<!-- ============ HOMEWORK ============ -->
+<section id="homework">
+  <div class="block-head reveal">
+    <p class="eyebrow">And yes — I did the homework</p>
+    <h2>I've watched<br>your <em>work</em>.</h2>
+  </div>
+
+  <div class="copy reveal">
+    <p>Not a skim. Here's what I actually noticed:</p>
+  </div>
+
+  <div class="hw reveal">
+    <div>
+      <p class="t">Nissan Magnite · District 5</p>
+      <p class="d">Live stream plus full event coverage, from setup to reveal — and a separate documentary that went to the factory instead of the showroom. That second one was the braver call.</p>
+    </div>
+    <div>
+      <p class="t">Dongfeng 007 &amp; 008</p>
+      <p class="d">Creative direction, production and execution — all of it yours. It shows. This is the work where you're an agency, not a vendor.</p>
+    </div>
+    <div>
+      <p class="t">Geely NEV launch</p>
+      <p class="d">You led the live stream. And an AI-generated commercial, in a market where almost nobody is trying that yet.</p>
+    </div>
+    <div>
+      <p class="t">Citroën C4X · Kasrawy</p>
+      <p class="d">A locally assembled car is a national story, not a product story. Covering it as a milestone night was the right read.</p>
+    </div>
+  </div>
+
+  <div class="copy reveal">
+    <p>Here's the thing I keep coming back to. Chinese brands are now close to half of Egyptian passenger car sales, and a handful of them landed their first volumes this year with <strong>no agency relationship at all</strong>. Whoever gets to them first with a point of view — not a rate card — takes the next five years.</p>
+    <p>You already have the camera and the credibility. I'd like to bring the audience thinking, and the appetite to go get them.</p>
+  </div>
+</section>
+
+<div class="strip"></div>
+
+<!-- ============ CLOSE ============ -->
+<section id="close">
+  <p class="eyebrow reveal">Redline</p>
+  <h2 class="reveal">Thanks for reading.<br>I hope it wasn't <em>boring</em>.</h2>
+  <p class="close-sub reveal">If you think I fit, give me a call. I will fit. Give me a chance to prove it.</p>
+
+  <div class="cta-buttons reveal">
+    <a class="btn" href="https://wa.me/201090113777?text=Hi%20Mahmoud%20%E2%80%94%20we%20read%20your%20page.%20Let%27s%20talk." target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.65.31-.22.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.15 3.66.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+      WhatsApp me
+    </a>
+    <a class="btn ghost" href="tel:+201090113777">Call — 010 9011 3777</a>
+    <a class="btn ghost" href="mailto:contact.mahmoudgamal@gmail.com?subject=Snaps%20Automotive">Email</a>
+  </div>
+
+  <p class="signoff reveal">Whatever you decide — thanks for the time it took to get this far. — Mahmoud</p>
+</section>
+
+</main>
+
+<footer>
+  <span>MAHMOUD GAMAL · CAIRO, EGYPT</span>
+  <span>
+    <a href="https://mahmoudjimmey.github.io/AutoApp/" target="_blank" rel="noopener noreferrer">FULL PORTFOLIO</a> ·
+    <a href="https://linkedin.com/in/mahmoudgamal-eldeen" target="_blank" rel="noopener noreferrer">LINKEDIN</a> ·
+    <a href="https://wa.me/201090113777" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+  </span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveal on scroll */
+  var els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    els.forEach(function(el){ io.observe(el); });
+  } else {
+    els.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* progress bar + gear indicator */
+  var bar = document.getElementById('bar');
+  var gearNum = document.getElementById('gearNum');
+  var ladder = document.getElementById('ladder').children;
+  var gears = ['N','1','2','3','4','5'];
+  var last = -1;
+  var ticking = false;
+
+  function update(){
+    ticking = false;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+    bar.style.width = (p * 100).toFixed(2) + '%';
+
+    var idx = Math.min(gears.length - 1, Math.floor(p * gears.length + 0.0001));
+    if (idx !== last){
+      last = idx;
+      gearNum.textContent = gears[idx];
+      if (!reduce){
+        gearNum.classList.add('shift');
+        setTimeout(function(){ gearNum.classList.remove('shift'); }, 190);
+      }
+      for (var i = 0; i < ladder.length; i++){
+        if (i < idx) { ladder[i].classList.add('on'); } else { ladder[i].classList.remove('on'); }
+      }
+    }
+  }
+  function onScroll(){ if (!ticking){ ticking = true; window.requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
